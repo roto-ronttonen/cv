@@ -4,7 +4,7 @@ const { join } = require('path');
 const locales = ['fi', 'en'];
 const jsonFiles = ['content.json'];
 
-const rootPath = process.env.CONTENT_ABS_PATH;
+const rootPath = process.env.CONTENT_ABS_PATH || process.cwd();
 
 const exists = async (path) => {
   try {

@@ -3,7 +3,7 @@ import { join } from 'path';
 import fs from 'fs';
 import { isPlainObject, mapValues } from 'lodash';
 
-const rootPath = process.env.CONTENT_ABS_PATH;
+const rootPath = process.env.CONTENT_ABS_PATH ?? process.cwd();
 
 const readFileAsync = (path: string): Promise<string> => {
   return new Promise((resolve, reject) => {
