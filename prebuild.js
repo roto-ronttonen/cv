@@ -15,6 +15,9 @@ const exists = async (path) => {
 const contentDir = join(process.cwd(), '_content');
 
 const main = async () => {
+  if (!exists(contentDir)) {
+    await fs.promises.mkdir(contentDir);
+  }
   // Create required folders and files
   for (const locale of locales) {
     const localeDir = join(contentDir, locale);
