@@ -10,7 +10,9 @@
   "dependencies": {
     "axios": "^0.21.1",
     "clsx": "^1.1.1",
+    "formidable": "^1.2.2",
     "lodash": "^4.17.20",
+    "nanoid": "^3.1.20",
     "next": "10.0.7",
     "react": "17.0.1",
     "react-dom": "17.0.1",
@@ -20,7 +22,9 @@
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
+    "@types/formidable": "^1.0.32",
     "@types/lodash": "^4.14.168",
+    "@types/nanoid": "^2.1.0",
     "@types/node": "^14.14.28",
     "@types/react": "^17.0.2",
     "autoprefixer": "^10.2.4",

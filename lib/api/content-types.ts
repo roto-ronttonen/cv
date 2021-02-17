@@ -8,9 +8,16 @@ export type HeaderContent = {
   title: string;
 };
 
+export type ProfileContent = {
+  title: string;
+  text: string;
+};
+
 export type SkillsContent = {
   title: string;
-  skills: string[];
+  skillNameTitle: string;
+  levelTitle: string;
+  skills: { name: string; level: 0 | 1 | 2 | 3 | 4 | 5 }[];
 };
 
 export type ExperienceContent = {
@@ -26,6 +33,7 @@ export type ExperienceContent = {
 export type Content = {
   meta: MetaContent;
   header: HeaderContent;
+  profile: ProfileContent;
   skills: SkillsContent;
   experience: ExperienceContent;
 };
@@ -39,9 +47,15 @@ export const contentDefaultValues: Content = {
     name: 'Lorem lipsum',
     title: 'Lorem lipsum',
   },
+  profile: {
+    title: 'Lorem lipsum',
+    text: 'Lorem lipsum',
+  },
   skills: {
     title: 'Lorem lipsum',
-    skills: ['Lorem lipsum'],
+    skillNameTitle: 'loreml lipsum',
+    levelTitle: 'Lorem lipsum',
+    skills: [{ name: 'Lorem lipsum', level: 5 }],
   },
   experience: {
     title: 'Lorem lipsum',

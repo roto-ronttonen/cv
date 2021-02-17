@@ -30,7 +30,7 @@ const fillDefaultsRecursive = (
     ...content,
     ...mapValues(defaultContent, (value, key) => {
       if (isPlainObject(value)) {
-        return fillDefaultsRecursive(content[key], value);
+        return fillDefaultsRecursive(content?.[key] ?? {}, value);
       }
       return content[key] ?? value;
     }),
@@ -44,6 +44,7 @@ export const getContent = async <T extends GenericObject>(
 ): Promise<T> => {
   const path = join(getContentDir(), locale, contentName + '.json');
   const content = await getJsonContent(path);
+
   if (!!defaultContent) {
     return fillDefaultsRecursive(content, defaultContent);
   }

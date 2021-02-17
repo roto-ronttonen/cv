@@ -1,15 +1,1 @@
-{
-  "meta": { "title": "Ronttonen", "description": "Lorem lipsum" },
-  "header": { "name": "Lorem lipsum", "title": "Lorem lipsum" },
-  "skills": { "skills": ["Lorem lipsum"] },
-  "experience": {
-    "experiences": [
-      {
-        "fromDate": "01.01.1970",
-        "toDate": "01.01.2021",
-        "employerName": "Lorem lipsum",
-        "text": "Lorem lipsum"
-      }
-    ]
-  }
-}
+{"meta":{"title":"Roni CV","description":"Ronin cv"},"header":{"name":"Roni Ahti","title":"Kehittäjä"},"profile":{"title":"Minusta","text":"Olen jokaisesta työ- ja opiskelupaikasta saanut kehuja kyvyistäni. Pärjään siis todennäköisesti seuraavassa työssäni myös todella hyvin. Ihmisenä olen hauska."},"skills":{"title":"Taidot","skills":[{"name":"Verkkokehitys","level":"5"},{"name":"Pilvipalvelut","level":"4"},{"name":"Järjestelmäkehitys","level":"4"},{"name":"DevOps","level":"4"},{"name":"Tekoäly","level":"3"}],"skillNameTitle":"Taito","levelTitle":"Taso"},"experience":{"title":"Kokemus","experiences":[{"employerName":"Loikka","fromDate":"1.2020","toDate":"1.2021","text":"Työskentelin nimikkeellä React Developer. Työni painottui verkkosovellusten käyttöliittymien suunnitteluun ja toteutukseen. Työ oli hyvin itsenäistä ja olin toteutuksesta vastuussa."},{"employerName":"Quru","fromDate":"5.2018","toDate":"1.2020","text":"Sain Super Analytcsin harjoittelun kautta työpaikan Qurulla. Työt jatkuivat samanlaisian aluksi. Loppua kohden aloin luomaan verkkosivuja Wordpressillä ja verkkoapplikaatioita Reactilla ja Djangolla."},{"employerName":"Super Analytics","fromDate":"2.2018","toDate":"5.2018","text":"Palkaton työharjoittelu verkkoanalytiikan parissa. Toteutin seurantaa Google Tag Manageria ja Google Analyticsiä käyttäen. Toteutin myös erilaisia apuskriptejä Pythonilla ja Javascriptillä."},{"fromDate":"5.2017","toDate":"7.2017","employerName":"Helpling","text":"Palkallinen työharjoittelu Saksassa, jossa pääsin ensimmäistä kertaa it-alan töihin. Tehtäviini kuului AB-testien luominen Javascriptillä ja niiden tuloksien seuranta Google Analyticsillä. Pääsin myös käyttämään Google Tag Manageria seurannan toteuttamisessa."}]}}
