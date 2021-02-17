@@ -190,7 +190,7 @@ export default function Home({ content, preview }: HomeProps) {
         </ContentContainer>
       </nav>
       <main>
-        <ContentContainer className="flex flex-col items-end divide-solid divide-y">
+        <ContentContainer className="flex flex-col items-end divide-solid divide-y divide-white">
           <section
             id="header"
             className="inline-flex flex-col py-4 w-full md:w-3/4"
