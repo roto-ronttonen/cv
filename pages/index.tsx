@@ -172,11 +172,29 @@ export default function Home({ content, preview }: HomeProps) {
           {locales.map((l, index) => (
             <React.Fragment key={l}>
               {index !== 0 && <span>/</span>}
-              <Link href={router.pathname} locale={l}>
-                <a className={clsx(index !== 0 && 'ml-2', 'mr-2')}>
+              {preview ? (
+                <a
+                  className={clsx(
+                    index !== 0 && 'ml-2',
+                    'mr-2',
+                    'cursor-pointer'
+                  )}
+                  onClick={async () => {
+                    await router.push(router.pathname, router.pathname, {
+                      locale: l,
+                    });
+                    window.location.reload();
+                  }}
+                >
                   {l.toUpperCase()}
                 </a>
-              </Link>
+              ) : (
+                <Link href={router.pathname} locale={l}>
+                  <a className={clsx(index !== 0 && 'ml-2', 'mr-2')}>
+                    {l.toUpperCase()}
+                  </a>
+                </Link>
+              )}
             </React.Fragment>
           ))}
           <a
