@@ -22,7 +22,19 @@ const main = async () => {
       await fs.promises.mkdir(localeDir);
     }
     for (const jsonFile of jsonFiles) {
-      await fs.promises.writeFile(join(localeDir, jsonFile), '{}', 'utf8');
+      const f = join(localeDir, jsonFile);
+      // Create file if not exist
+      if (!exists(f)) {
+        await fs.promises.writeFile(join(localeDir, jsonFile), '{}', 'utf8');
+      }
+      // If file is invalid (cant be parsed)
+      // Create file
+      const content = await fs.promises.readFile(f, 'utf8');
+      try {
+        JSON.parse(content);
+      } catch (e) {
+        await fs.promises.writeFile(join(localeDir, jsonFile), '{}', 'utf8');
+      }
     }
   }
 };
