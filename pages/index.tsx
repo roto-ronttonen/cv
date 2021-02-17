@@ -270,5 +270,6 @@ export const getStaticProps: GetStaticProps = async ({ locale, preview }) => {
       content,
       preview: !!preview,
     },
+    revalidate: 5,
   };
 };
