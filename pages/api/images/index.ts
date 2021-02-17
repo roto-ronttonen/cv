@@ -6,7 +6,8 @@ import { Fields, Files, IncomingForm, File } from 'formidable';
 import { isArray, map } from 'lodash';
 import { nanoid } from 'nanoid';
 import { authorize } from '../../../lib/api/authorize';
-export const basePath = join(process.cwd(), '_media');
+import { rootPath } from '../../../consts';
+export const basePath = join(rootPath, '_media');
 
 export const mime = {
   gif: 'image/gif',
