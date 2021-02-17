@@ -5,22 +5,31 @@ import { isPlainObject, mapValues } from 'lodash';
 
 import { rootPath } from '../../consts';
 
-const readFileAsync = (path: string): Promise<string> => {
-  return new Promise((resolve, reject) => {
-    fs.readFile(path, 'utf8', (err, data) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(data);
-      }
-    });
-  });
-};
-//
 const getContentDir = () => join(rootPath, '_content');
 
 const getJsonContent = async (path: string) => {
-  return JSON.parse(await readFileAsync(path));
+  return JSON.parse(await fs.promises.readFile(path, 'utf8'));
+};
+
+export const makeDirsIfNotExist = async (path: string) => {
+  try {
+    await fs.promises.access(path);
+  } catch (e) {
+    await fs.promises.mkdir(path, { recursive: true });
+  }
+};
+
+export const makeJsonFileIfNotExistOrCorrupt = async (path: string) => {
+  try {
+    await fs.promises.access(path);
+  } catch (e) {
+    await fs.promises.writeFile(path, '{}', 'utf8');
+  }
+  try {
+    JSON.parse(await fs.promises.readFile(path, 'utf8'));
+  } catch (e) {
+    await fs.promises.writeFile(path, '{}', 'utf8');
+  }
 };
 
 type GenericObject = { [key: string]: any };
@@ -44,7 +53,12 @@ export const getContent = async <T extends GenericObject>(
   contentName: string,
   defaultContent?: T
 ): Promise<T> => {
-  const path = join(getContentDir(), locale, contentName + '.json');
+  const dirPath = join(getContentDir(), locale);
+  const path = join(dirPath, contentName + '.json');
+  // Make dirs if not exist
+  await makeDirsIfNotExist(dirPath);
+  // Make file if not exist
+  await makeJsonFileIfNotExistOrCorrupt(path);
   const content = await getJsonContent(path);
 
   if (!!defaultContent) {

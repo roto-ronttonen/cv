@@ -7,6 +7,7 @@ import { isArray, map } from 'lodash';
 import { nanoid } from 'nanoid';
 import { authorize } from '../../../lib/api/authorize';
 import { rootPath } from '../../../consts';
+import { makeDirsIfNotExist } from '../../../lib/api';
 export const basePath = join(rootPath, '_media');
 
 export const mime = {
@@ -48,6 +49,7 @@ const uploadImage = async (req: NextApiRequest, res: NextApiResponse) => {
 
   // contents is a string with the content of uploaded file, so you can read it or store
   const fileName = `${nanoid()}${extname(file.name)}`;
+  await makeDirsIfNotExist(basePath);
   await fs.promises.writeFile(join(basePath, fileName), contents, 'binary');
   res.json({ file: fileName, url: `/api/images/${fileName}` });
   return res.end();
