@@ -25,7 +25,7 @@ const main = async () => {
       const f = join(localeDir, jsonFile);
       // Create file if not exist
       if (!exists(f)) {
-        await fs.promises.writeFile(join(localeDir, jsonFile), '{}', 'utf8');
+        await fs.promises.writeFile(f, '{}', 'utf8');
       }
       // If file is invalid (cant be parsed)
       // Create file
@@ -33,7 +33,7 @@ const main = async () => {
       try {
         JSON.parse(content);
       } catch (e) {
-        await fs.promises.writeFile(join(localeDir, jsonFile), '{}', 'utf8');
+        await fs.promises.writeFile(f, '{}', 'utf8');
       }
     }
   }
