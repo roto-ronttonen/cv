@@ -15,19 +15,19 @@ const exists = async (path) => {
 const contentDir = join(process.cwd(), '_content');
 
 const main = async () => {
-  if (!exists(contentDir)) {
+  if (!(await exists(contentDir))) {
     await fs.promises.mkdir(contentDir);
   }
   // Create required folders and files
   for (const locale of locales) {
     const localeDir = join(contentDir, locale);
-    if (!exists(localeDir)) {
+    if (!(await exists(localeDir))) {
       await fs.promises.mkdir(localeDir);
     }
     for (const jsonFile of jsonFiles) {
       const f = join(localeDir, jsonFile);
       // Create file if not exist
-      if (!exists(f)) {
+      if (!(await exists(f))) {
         await fs.promises.writeFile(f, '{}', 'utf8');
       }
       // If file is invalid (cant be parsed)
