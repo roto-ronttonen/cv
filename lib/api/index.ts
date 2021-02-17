@@ -3,6 +3,8 @@ import { join } from 'path';
 import fs from 'fs';
 import { isPlainObject, mapValues } from 'lodash';
 
+const rootPath = process.env.CONTENT_ABS_PATH;
+
 const readFileAsync = (path: string): Promise<string> => {
   return new Promise((resolve, reject) => {
     fs.readFile(path, 'utf8', (err, data) => {
@@ -15,7 +17,7 @@ const readFileAsync = (path: string): Promise<string> => {
   });
 };
 //
-const getContentDir = () => join(process.cwd(), '_content');
+const getContentDir = () => join(rootPath, '_content');
 
 const getJsonContent = async (path: string) => {
   return JSON.parse(await readFileAsync(path));
