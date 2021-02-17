@@ -20,6 +20,7 @@ export const mime = {
 export const allowedTypes = map(mime, (value) => value);
 
 const uploadImage = async (req: NextApiRequest, res: NextApiResponse) => {
+  await makeDirsIfNotExist(basePath);
   // parse form with a Promise wrapper
   const data: { fields: Fields; files: Files } = await new Promise(
     (resolve, reject) => {
@@ -56,6 +57,7 @@ const uploadImage = async (req: NextApiRequest, res: NextApiResponse) => {
 };
 
 const listImages = async (req: NextApiRequest, res: NextApiResponse) => {
+  await makeDirsIfNotExist(basePath);
   const files = await fs.promises.readdir(basePath);
   res.json({ files: files.map((f) => ({ url: `/api/images/${f}`, file: f })) });
   return res.end();

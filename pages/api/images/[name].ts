@@ -4,6 +4,7 @@ import { basePath, mime } from '.';
 import fs from 'fs';
 import { HttpError } from '../../../lib/http-error';
 import { authorize } from '../../../lib/api/authorize';
+import { makeDirsIfNotExist } from '../../../lib/api';
 
 const createPath = (req: NextApiRequest) =>
   join(
@@ -13,6 +14,7 @@ const createPath = (req: NextApiRequest) =>
   );
 
 const deleteImage = async (req: NextApiRequest, res: NextApiResponse) => {
+  await makeDirsIfNotExist(basePath);
   const path = createPath(req);
 
   await fs.promises.unlink(path);
@@ -21,6 +23,7 @@ const deleteImage = async (req: NextApiRequest, res: NextApiResponse) => {
 };
 
 const getImage = async (req: NextApiRequest, res: NextApiResponse) => {
+  await makeDirsIfNotExist(basePath);
   const path = createPath(req);
 
   const type = mime[extname(path).slice(1)] || 'text/plain';
