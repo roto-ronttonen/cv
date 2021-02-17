@@ -1,0 +1,15 @@
+{
+  "meta": { "title": "Ronttonen", "description": "Lorem lipsum" },
+  "header": { "name": "Lorem lipsum", "title": "Lorem lipsum" },
+  "skills": { "skills": ["Lorem lipsum"] },
+  "experience": {
+    "experiences": [
+      {
+        "fromDate": "01.01.1970",
+        "toDate": "01.01.2021",
+        "employerName": "Lorem lipsum",
+        "text": "Lorem lipsum"
+      }
+    ]
+  }
+}
